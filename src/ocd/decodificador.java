@@ -1,13 +1,15 @@
-public void decodificador(){
+package ocd;
+
+public class decodificador {
     //as duas primeiras posições determinam o ciclo de instrução executado
     //as próximas três posições determinam a operação (adição subtração, etc...)
     //a sexta posição determina se a instrução é feita na porta 1 ou 2 do IR
 
-    private int [] adicionaUPCODE(int[] cod, int instrucao, int operacao, int porta){
+    private int[] adicionaUPCODE(int[] cod, int instrucao, int operacao, int porta) {
       if(instrucao == 0){//adicionar ao acumulador
         //adiciona nas duas primeiras posicoes 00
       }
-      if(intrucao == 1){//envia para ula
+      if(instrucao == 1){//envia para ula
         //adiciona nas duas primeiras posicoes 01
       }
       if(instrucao == 3){//retornar valor p/ memoria
@@ -40,10 +42,15 @@ public void decodificador(){
       if(porta == 1){//porta 2
         //adiciona na sexta posicao 1
       }
+      
+      return null;
     }
     private int [] insereEnderecos(int [] cod, String instrucao){
-      //insere s.substring(4,s.indexOf(',')) da posicao
+    	//insere s.substring(4,s.indexOf(',')) da posicao
+    	return null;
     }
+}
+    
     if(s.substring(0,3) == "ADD"){
       int[] codigo1 = new int[18];
       int[] codigo2 = new int[18];
