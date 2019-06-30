@@ -4,7 +4,7 @@ public class PC {
         memoriaPc++;
     }
 
-    static public int getMemoriaPc(){
+    static public int get(){
         return memoriaPc;
     }
 }

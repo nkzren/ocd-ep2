@@ -1,8 +1,8 @@
 public class MAR{
-    static private int memoriaMar;
+    static private int valor;
 
     public MAR(int memoriaEntrada){
-        this.memoriaMar = memoriaEntrada;
+        this.valor = memoriaEntrada;
     }
 
 }
