@@ -7,8 +7,7 @@ public class AC{
         vetor = vetorEntrada;
     }
 
-    static public int[] exibeVetor(){
+    static public int[] get(){
         return vetor;
     }
-
 }
