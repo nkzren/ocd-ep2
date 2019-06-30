@@ -6,6 +6,7 @@ public class memoria{
         return memoria.get(indice+4);
     }
     public static void add(int[] palavra){
+    	System.out.println("ADICIONA PALAVRA NA MEMORIA");
         memoria.add(palavra);
     }
     public static void add(int[] palavra){
