@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Memoria{
-    private static List<String> memoria = new ArrayList<String>();
+    private static List<int[]> memoria = new ArrayList<int[]>();
     public static int[] getValor(int indice){
         return memoria.get(indice+4);
     }
