@@ -1,3 +1,5 @@
+package ocd;
+
 public class MBR{
     static private int valor;
 
