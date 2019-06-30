@@ -14,7 +14,7 @@ public class Decodificador {
 			// adiciona nas duas primeiras posicoes 01
 			setInstrucao(cod, 0, 1);
 		}
-		if (instrucao == 2) {// retornar valor p/ memoria
+		if (instrucao == 2) {// retornar valor p/ Memoria
 			// adiciona nas duas primeiras posicoes 10
 			setInstrucao(cod, 1, 0);
 		}
@@ -101,9 +101,9 @@ public class Decodificador {
 			codigo3 = adicionaUPCODE(codigo3, 2, 0, 0);
 			codigo3 = insereEnderecos(codigo3, s);
 
-			memoria.add(codigo1);
-			memoria.add(codigo2);
-			memoria.add(codigo3);
+			Memoria.add(codigo1);
+			Memoria.add(codigo2);
+			Memoria.add(codigo3);
 		}
 		if (s.substring(0, 3) == "SUB") {
 			int[] codigo1 = new int[18];
@@ -122,9 +122,9 @@ public class Decodificador {
 			codigo3 = adicionaUPCODE(codigo3, 2, 1, 0);
 			codigo3 = insereEnderecos(codigo3, s);
 
-			memoria.add(codigo1);
-			memoria.add(codigo2);
-			memoria.add(codigo3);
+			Memoria.add(codigo1);
+			Memoria.add(codigo2);
+			Memoria.add(codigo3);
 		}
 		if (s.substring(0, 3) == "MUL") {
 			int[] codigo1 = new int[18];
@@ -143,9 +143,9 @@ public class Decodificador {
 			codigo3 = adicionaUPCODE(codigo3, 2, 2, 0);
 			codigo3 = insereEnderecos(codigo3, s);
 
-			memoria.add(codigo1);
-			memoria.add(codigo2);
-			memoria.add(codigo3);
+			Memoria.add(codigo1);
+			Memoria.add(codigo2);
+			Memoria.add(codigo3);
 		}
 		if (s.substring(0, 3) == "DIV") {
 			int[] codigo1 = new int[18];
@@ -164,9 +164,9 @@ public class Decodificador {
 			codigo3 = adicionaUPCODE(codigo3, 2, 3, 0);
 			codigo3 = insereEnderecos(codigo3, s);
 
-			memoria.add(codigo1);
-			memoria.add(codigo2);
-			memoria.add(codigo3);
+			Memoria.add(codigo1);
+			Memoria.add(codigo2);
+			Memoria.add(codigo3);
 		}
 		if (s.substring(0, 3) == "MOV") {
 			int[] codigo1 = new int[18];
@@ -185,9 +185,9 @@ public class Decodificador {
 			codigo3 = adicionaUPCODE(codigo3, 0, 0, 0);
 			codigo3 = insereEnderecos(codigo3, s);
 
-			memoria.add(codigo1);
-			memoria.add(codigo2);
-			memoria.add(codigo3);
+			Memoria.add(codigo1);
+			Memoria.add(codigo2);
+			Memoria.add(codigo3);
 		}
 		if (s.substring(0, 3) == "INC") {
 
