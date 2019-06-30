@@ -1,3 +1,5 @@
+package ocd;
+
 public class MAR{
     static private int memoriaMar;
 

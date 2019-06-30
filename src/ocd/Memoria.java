@@ -1,7 +1,10 @@
 package ocd;
 
-public class memoria{
-    private static ArrayList<String> memoria = new ArrayList();
+import java.util.ArrayList;
+import java.util.List;
+
+public class Memoria{
+    private static List<String> memoria = new ArrayList<String>();
     public static int[] getValor(int indice){
         return memoria.get(indice+4);
     }
