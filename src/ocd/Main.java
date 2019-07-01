@@ -5,7 +5,7 @@ public class Main{
   public static void cicloBusca(){
       MAR.set(PC.get());
       MBR.set(Memoria.getValor(MAR.valor));
-      IR(MBR.get());//
+      IR.construtor(MBR.get());
       IR.opcode = "000000";
       UC(IR.opcode);
   }
@@ -22,7 +22,7 @@ public class Main{
     if(opcode.equals("01")){
       //instrução 2 - Soma endereço 2 ao acumulador
       MAR.set(IR.get(flag));
-      MBR.set(Memoria.getValor(MAR.valor));//
+      MBR.set(Memoria.getValor(MAR.valor));
       // ULA(MBR,IR.porta2);
     }
     if(opcode.equals("10")){
