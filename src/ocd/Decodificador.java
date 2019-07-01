@@ -1,7 +1,8 @@
-package ocd;
+// package ocd;
 
 public class Decodificador {
 	
+  // define as 6 primeiras posições do vetor como o opcode da palavra
 	// as duas primeiras posições determinam o ciclo de instrução executado
 	// as próximas três posições determinam a operação (adição subtração, etc...)
 	// a sexta posição determina se a instrução é feita na porta 1 ou 2 do IR
@@ -59,6 +60,7 @@ public class Decodificador {
 
 	}
 	
+  //funções auxiliares para o adicionaUPCODE()
 	private static void setInstrucao(int[] cod, int pos1, int pos2) {
 		cod[0] = pos1;
 		cod[1] = pos2;
@@ -74,9 +76,12 @@ public class Decodificador {
 		cod[5] = pos;
 	}
 
+  // define os próximos endereços do vetor como os endereços de memória para os comandos executados (6 para cada endereço)
 	public static int[] insereEnderecos(int[] cod, String instrucao) {
 		String registrador1 = instrucao.substring(4,instrucao.indexOf(','));
 		String registrador2 = instrucao.substring(instrucao.indexOf(',')+1,instrucao.length());
+
+    //define primeiro endereço
 		if(registrador1.equalsIgnoreCase("AX")){
 			//registrador na posição 0
 			for(int i = 6;i < 12;i++){
@@ -106,9 +111,11 @@ public class Decodificador {
 			cod[10] = 1;
 			cod[11] = 1;
 		}
-		else{
-			//tipo lançamento de excessão
-		}
+    else{
+      System.out.println("Comando inválido");
+    }
+
+    //define segundo endereço
 		if(registrador2.equalsIgnoreCase("AX")){
 			//registrador na posição 0
 			for(int i = 12;i < cod.length;i++){
@@ -138,6 +145,7 @@ public class Decodificador {
 			cod[cod.length-2] = 1;
 			cod[cod.length-1] = 1;
 		}
+    //transforma um valor numérico em ...
 		else{
 			int valor = Integer.parseInt(registrador2);
 			String bin = Integer.toBinaryString(valor);
@@ -145,18 +153,12 @@ public class Decodificador {
 				cod[i] = bin.charAt(i-12);
 			}
 		}
-		
-		// pega s.substring(4,s.indexOf(',')) e transforma em codigo
 		return cod;
-		// insere codigo da posicao 7 ate 12 (seis numeros)
-		// pega s.substring(s.indexOf(',')+1,s.length) e transforma em codigo
-		// identifica se é string("ax") ou se é int(1,2,3)
-		// insere codigo da posicao 12 ate o fim (seis numeros)
 	}
 
 	@SuppressWarnings("unused")
 	public static void decodifica(String s) {
-		if (s.substring(0, 3) == "ADD") {
+		if (s.substring(0, 3).equals("ADD")) {
 			int[] codigo1 = new int[18];
 			int[] codigo2 = new int[18];
 			int[] codigo3 = new int[18];
@@ -176,107 +178,98 @@ public class Decodificador {
 			Memoria.add(codigo1);
 			Memoria.add(codigo2);
 			Memoria.add(codigo3);
-		} else if (s.substring(0, 3) == "SUB") {
+		} else if (s.substring(0, 3).equals("SUB")) {
 			int[] codigo1 = new int[18];
 			int[] codigo2 = new int[18];
 			int[] codigo3 = new int[18];
 
-			// insere o opcode do primeiro item na memória
 			codigo1 = adicionaUPCODE(codigo1, 0, 1, 0);
 			codigo1 = insereEnderecos(codigo1, s);
 
-			// insere o opcoden do segundo item na memória
 			codigo2 = adicionaUPCODE(codigo2, 1, 1, 1);
 			codigo2 = insereEnderecos(codigo2, s);
 
-			// insere o opcode do terceiro item na memória
 			codigo3 = adicionaUPCODE(codigo3, 2, 1, 0);
 			codigo3 = insereEnderecos(codigo3, s);
 
 			Memoria.add(codigo1);
 			Memoria.add(codigo2);
 			Memoria.add(codigo3);
-		} else if (s.substring(0, 3) == "MUL") {
+		} else if (s.substring(0, 3).equals("MUL")) {
 			int[] codigo1 = new int[18];
 			int[] codigo2 = new int[18];
 			int[] codigo3 = new int[18];
 
-			// insere o opcode do primeiro item na memória
 			codigo1 = adicionaUPCODE(codigo1, 0, 2, 0);
 			codigo1 = insereEnderecos(codigo1, s);
 
-			// insere o opcoden do segundo item na memória
 			codigo2 = adicionaUPCODE(codigo2, 1, 2, 1);
 			codigo2 = insereEnderecos(codigo2, s);
 
-			// insere o opcode do terceiro item na memória
 			codigo3 = adicionaUPCODE(codigo3, 2, 2, 0);
 			codigo3 = insereEnderecos(codigo3, s);
 
 			Memoria.add(codigo1);
 			Memoria.add(codigo2);
 			Memoria.add(codigo3);
-		} else if (s.substring(0, 3) == "DIV") {
+		} else if (s.substring(0, 3).equals("DIV")) {
 			int[] codigo1 = new int[18];
 			int[] codigo2 = new int[18];
 			int[] codigo3 = new int[18];
 
-			// insere o opcode do primeiro item na memória
 			codigo1 = adicionaUPCODE(codigo1, 0, 3, 0);
 			codigo1 = insereEnderecos(codigo1, s);
 
-			// insere o opcoden do segundo item na memória
 			codigo2 = adicionaUPCODE(codigo2, 1, 3, 1);
 			codigo2 = insereEnderecos(codigo2, s);
 
-			// insere o opcode do terceiro item na memória
 			codigo3 = adicionaUPCODE(codigo3, 2, 3, 0);
 			codigo3 = insereEnderecos(codigo3, s);
 
 			Memoria.add(codigo1);
 			Memoria.add(codigo2);
 			Memoria.add(codigo3);
-		} else if (s.substring(0, 3) == "MOV") {
+		} else if (s.substring(0, 3).equals("MOV")) {
 			int[] codigo1 = new int[18];
 			int[] codigo2 = new int[18];
 			int[] codigo3 = new int[18];
 
-			// insere o opcode do primeiro item na memória
 			codigo1 = adicionaUPCODE(codigo1, 0, 0, 0);
 			codigo1 = insereEnderecos(codigo1, s);
 
-			// insere o opcoden do segundo item na memória
 			codigo2 = adicionaUPCODE(codigo2, 2, 0, 0);
 			codigo2 = insereEnderecos(codigo2, s);
 
-			// insere o opcode do terceiro item na memória
 			codigo3 = adicionaUPCODE(codigo3, 0, 0, 0);
 			codigo3 = insereEnderecos(codigo3, s);
 
 			Memoria.add(codigo1);
 			Memoria.add(codigo2);
 			Memoria.add(codigo3);
-		} else if (s.substring(0, 3) == "INC") {
+		} //else if (s.substring(0, 3) == "INC") {
 
-		} else if (s.substring(0, 3) == "DEC") {
+		// } else if (s.substring(0, 3) == "DEC") {
 
-		} else if (s.substring(0, 3) == "CMP") {
+		// } else if (s.substring(0, 3) == "CMP") {
 
-		} else if (s.substring(0, 3) == "JMP") {
+		// } else if (s.substring(0, 3) == "JMP") {
 
-		} else if (s.substring(0, 3) == "JPE") {
+		// } else if (s.substring(0, 3) == "JPE") {
 
-		} else if (s.substring(0, 3) == "JPG") {
+		// } else if (s.substring(0, 3) == "JPG") {
 
-		} else if (s.substring(0, 3) == "JGE") {
+		// } else if (s.substring(0, 3) == "JGE") {
 
-		} else if (s.substring(0, 3) == "JPL") {
+		// } else if (s.substring(0, 3) == "JPL") {
 
-		} else if (s.substring(0, 3) == "JLE") {
+		// } else if (s.substring(0, 3) == "JLE") {
 
-		} else if (s.substring(0, 3) == "JNE") {
+		// } else if (s.substring(0, 3) == "JNE") {
 
-		}
+		// }
+    else{
+      System.out.println("Operador inválido.");
+    }
 	}
 
 }
