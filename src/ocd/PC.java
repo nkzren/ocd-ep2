@@ -1,7 +1,7 @@
 package ocd;
 
 public class PC {
-    static private int valorPc = 0;
+    static private int valorPc = 4;
     static public void incrementaPc(){
         valorPc++;
     }
@@ -11,5 +11,6 @@ public class PC {
     }
     static public void set(int valorEntrada){
         valorPc = valorEntrada;
+        System.out.println("PC: "+valorPc);
     }
 }

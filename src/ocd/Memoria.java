@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Memoria{
     // private static List<int[]> memoria = new ArrayList<int[]>();
-    private static int[][] memoria = new int[63][18];
+    private static int[][] memoria = new int[64][18];
     private static int contIndice = 0;
     public static int[] getValor(int indice){
-        return memoria[indice+4];
+        return memoria[indice];
     }
     public static void add(int[] palavra){
     	// System.out.println("ADICIONA PALAVRA NA MEMORIA");

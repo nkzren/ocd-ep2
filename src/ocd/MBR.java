@@ -9,7 +9,7 @@ public class MBR{
     public static int[] get(){
         return valor;
     }
-    public static void insereMemoria(){
-        Memoria.addIndice(IR.get(0), valor);
+    public static void insereMemoria(int indice){
+        Memoria.addIndice(indice, valor);
     }
 }

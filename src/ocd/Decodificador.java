@@ -151,7 +151,7 @@ public class Decodificador {
       int[] constanteNumerica = new int[18];
       constanteNumerica = Util.getInstance().converteBin(valor);
       //adiciona valor na última posição de memória, e passa esse endereço para a IR
-      Memoria.addIndice(62,constanteNumerica);
+      Memoria.addIndice(63,constanteNumerica);
       for(int i = 12;i < cod.length;i++){
 				cod[i] = 1;
 			}

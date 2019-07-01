@@ -2,38 +2,40 @@ import java.util.Scanner;
 
 class Main {
   public static void cicloBusca(){
+    for(int i = 0;i < 3;i++){
       System.out.println("Inicia ciclo de busca");
       MAR.set(PC.get());
       MBR.set(Memoria.getValor(MAR.valor));
       IR.define(MBR.get());
       UC(IR.getOpcode());
+    }
   }
 
   public static void UC(String opcode){
     System.out.println("Executa instrução");
     int flag = 0;
     PC.incrementaPc();
-    if(opcode.equals("00")){
+    if(opcode.substring(0,2).equals("00")){
         //instrução 1 - Coloca endereço 1 no acumulador
         MAR.set(IR.get(flag));
         MBR.set(Memoria.getValor(MAR.valor));
         AC.recebeVetor(MBR.get());
     }
-    else if(opcode.equals("01")){
+    else if(opcode.substring(0,2).equals("01")){
       //instrução 2 - Soma endereço 2 ao acumulador
       flag = 1;
       MAR.set(IR.get(flag));
       MBR.set(Memoria.getValor(MAR.valor));
       ULA.send(MBR.get(),IR.getOpcode());
     }
-    else if(opcode.equals("10")){
+    else if(opcode.substring(0,2).equals("10")){
       //instrução 3 - Coloca acumulador no endereço 1
       flag = 0;
       MAR.set(IR.get(flag));
-      MBR.set(Memoria.getValor(MAR.valor));
-      MBR.insereMemoria();
+      MBR.set(AC.get());
+      MBR.insereMemoria(MAR.valor);
     }
-    else if(opcode.equals("11")){
+    else if(opcode.substring(0,2).equals("11")){
       //instrução 4 - Coloca o endereço 1 no PC
       PC.set(IR.get(flag));
     }
