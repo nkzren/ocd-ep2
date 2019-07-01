@@ -76,7 +76,7 @@ public class Decodificador {
 
 	private int[] insereEnderecos(int[] cod, String instrucao) {
 		String registrador1 = instrucao.substring(4,instrucao.indexOf(','));
-		String registrador2 = instrucao.substring(instrucao.indexOf(',')+1,instrucao.length);
+		String registrador2 = instrucao.substring(instrucao.indexOf(',')+1,instrucao.length());
 		if(registrador1 == "AX"){
 			//registrador na posição 0
 			for(int i = 6;i < 12;i++){
@@ -88,7 +88,7 @@ public class Decodificador {
 			for(int i = 6;i < 11;i++){
 				cod[i] = 0;
 			}
-			cod[11] = 1
+			cod[11] = 1;
 		}
 		else if(registrador1 == "CX"){
 			//registrador na posição 2
@@ -120,7 +120,7 @@ public class Decodificador {
 			for(int i = 12;i < instrucao.length()-1;i++){
 				cod[i] = 0;
 			}
-			cod[instrucao.length()-1] = 1
+			cod[instrucao.length()-1] = 1;
 		}
 		else if(registrador2 == "CX"){
 			 //registrador na posição 2
