@@ -13,7 +13,7 @@ public class Memoria{
         memoria.add(palavra);
     }
     public static void addIndice(int[] palavra){
-    	memoria.add(IR.porta1, palavra);
+    	memoria.add(IR.getPorta1(), palavra);
     }
     public static void imprime(int i){
         System.out.println(memoria.get(i));
