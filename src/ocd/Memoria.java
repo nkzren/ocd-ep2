@@ -1,7 +1,10 @@
 package ocd;
 
-public class memoria{
-    private static ArrayList<int[]> memoria = new ArrayList<int[]>();
+import java.util.ArrayList;
+import java.util.List;
+
+public class Memoria{
+    private static List<int[]> memoria = new ArrayList<int[]>();
     public static int[] getValor(int indice){
         return memoria.get(indice+4);
     }
@@ -9,7 +12,7 @@ public class memoria{
     	System.out.println("ADICIONA PALAVRA NA MEMORIA");
         memoria.add(palavra);
     }
-    public static void add(int[] palavra){
-        memoria.add(IR.porta1, palavra);
+    public static void addIndice(int[] palavra){
+    	memoria.add(IR.porta1, palavra);
     }
 }
