@@ -24,20 +24,11 @@ class IR {
 		IR.opcode = opcode;
 	}
 
-	public static int getPorta1() {
-		return porta1;
+	public static int get(int f){
+		if(f == 0){
+			return porta1;
+		}else{
+			return porta2;
+		}
 	}
-
-	public static void setPorta1(int porta1) {
-		IR.porta1 = porta1;
-	}
-
-	public static int getPorta2() {
-		return porta2;
-	}
-
-	public static void setPorta2(int porta2) {
-		IR.porta2 = porta2;
-	}
-
 }
