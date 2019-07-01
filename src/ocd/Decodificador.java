@@ -111,37 +111,37 @@ public class Decodificador {
 		}
 		if(registrador2 == "AX"){
 			//registrador na posição 0
-			for(int i = 12;i < instrucao.length();i++){
+			for(int i = 12;i < cod.length;i++){
 				cod[i] = 0;
 			}
 		}
 		else if(registrador2 == "BX"){
 			//registrador na posição 1
-			for(int i = 12;i < instrucao.length()-1;i++){
+			for(int i = 12;i < cod.length-1;i++){
 				cod[i] = 0;
 			}
-			cod[instrucao.length()-1] = 1;
+			cod[cod.length-1] = 1;
 		}
 		else if(registrador2 == "CX"){
 			 //registrador na posição 2
-			for(int i = 12;i < instrucao.length()-2;i++){
+			for(int i = 12;i < cod.length-2;i++){
 				cod[i] = 0;
 			}
-			cod[instrucao.length()-2] = 1;
-			cod[instrucao.length()-1] = 0;
+			cod[cod.length-2] = 1;
+			cod[cod.length-1] = 0;
 		}
 		else if(registrador2 == "DX"){
 			//registrador na posição 3
-			for(int i = 12;i < instrucao.length()-2;i++){
+			for(int i = 12;i < cod.length-2;i++){
 				cod[i] = 0;
 			}
-			cod[instrucao.length()-2] = 1;
-			cod[instrucao.length()-1] = 1;
+			cod[cod.length-2] = 1;
+			cod[cod.length-1] = 1;
 		}
 		else{
 			int valor = Integer.parseInt(registrador2);
 			String bin = Integer.toBinaryString(valor);
-			for(int i = 12;i < instrucao.length();i++){
+			for(int i = 12;i < cod.length;i++){
 				cod[i] = bin.charAt(i-12);
 			}
 		}
