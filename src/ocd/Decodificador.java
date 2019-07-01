@@ -75,6 +75,77 @@ public class Decodificador {
 	}
 
 	private int[] insereEnderecos(int[] cod, String instrucao) {
+		String registrador1 = instrucao.substring(4,instrucao.indexOf(','));
+		String registrador2 = instrucao.substring(instrucao.indexOf(',')+1,instrucao.length);
+		if(registrador1 == "AX"){
+			//registrador na posição 0
+			for(int i = 6;i < 12;i++){
+				cod[i] = 0;
+			}
+		}
+		else if(registrador1 == "BX"){
+			//registrador na posição 1
+			for(int i = 6;i < 11;i++){
+				cod[i] = 0;
+			}
+			cod[11] = 1
+		}
+		else if(registrador1 == "CX"){
+			//registrador na posição 2
+			for(int i = 6;i < 10;i++){
+				cod[i] = 0;
+			}
+			cod[10] = 1;
+			cod[11] = 0;
+		}
+		else if(registrador1 == "DX"){
+			//registrador na posição 3
+			for(int i = 6;i < 10;i++){
+				cod[i] = 0;
+			}
+			cod[10] = 1;
+			cod[11] = 1;
+		}
+		else{
+			//tipo lançamento de excessão
+		}
+		if(registrador2 == "AX"){
+			//registrador na posição 0
+			for(int i = 12;i < instrucao.length();i++){
+				cod[i] = 0;
+			}
+		}
+		else if(registrador2 == "BX"){
+			//registrador na posição 1
+			for(int i = 12;i < instrucao.length()-1;i++){
+				cod[i] = 0;
+			}
+			cod[instrucao.length()-1] = 1
+		}
+		else if(registrador2 == "CX"){
+			 //registrador na posição 2
+			for(int i = 12;i < instrucao.length()-2;i++){
+				cod[i] = 0;
+			}
+			cod[instrucao.length()-2] = 1;
+			cod[instrucao.length()-1] = 0;
+		}
+		else if(registrador2 == "DX"){
+			//registrador na posição 3
+			for(int i = 12;i < instrucao.length()-2;i++){
+				cod[i] = 0;
+			}
+			cod[instrucao.length()-2] = 1;
+			cod[instrucao.length()-1] = 1;
+		}
+		else{
+			int valor = Integer.parseInt(registrador2);
+			String bin = Integer.toBinaryString(valor);
+			for(int i = 12;i < instrucao.length();i++){
+				cod[i] = bin.charAt(i-12);
+			}
+		}
+		
 		// pega s.substring(4,s.indexOf(',')) e transforma em codigo
 		return cod;
 		// insere codigo da posicao 7 ate 12 (seis numeros)
