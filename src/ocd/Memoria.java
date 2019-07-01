@@ -4,18 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Memoria{
-    private static List<int[]> memoria = new ArrayList<int[]>();
+    // private static List<int[]> memoria = new ArrayList<int[]>();
+    private static int[][] memoria = new int[63][18];
+    private static int contIndice = 0;
     public static int[] getValor(int indice){
-        return memoria.get(indice+4);
+        return memoria[indice+4];
     }
     public static void add(int[] palavra){
     	// System.out.println("ADICIONA PALAVRA NA MEMORIA");
-        memoria.add(palavra);
+        memoria[contIndice] = palavra;
+        contIndice++;
     }
     public static void addIndice(int indice, int[] palavra){
-    	memoria.add(indice, palavra);
+    	memoria[indice] = palavra;
     }
     public static void imprime(int i){
-        System.out.println(Util.getInstance().intArrayToString(memoria.get(i)));
+        System.out.println(Util.getInstance().intArrayToString(memoria[i]));
     }
 }

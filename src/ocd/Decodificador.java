@@ -148,14 +148,18 @@ public class Decodificador {
     //transforma um valor numérico em ...
 		else{
 			int valor = Integer.parseInt(registrador2);
-			int[] constanteNumerica = new int[18];
-			constanteNumerica = Util.getInstance().converteBin(valor);
-			System.out.println(Util.getInstance().intArrayToString(constanteNumerica));
-			// Memoria.addIndice(63,constanteNumerica);
+      int[] constanteNumerica = new int[18];
+      constanteNumerica = Util.getInstance().converteBin(valor);
+      //adiciona valor na última posição de memória, e passa esse endereço para a IR
+      Memoria.addIndice(62,constanteNumerica);
+      for(int i = 12;i < cod.length;i++){
+				cod[i] = 1;
+			}
 		}
 		return cod;
 	}
 
+  //Método principal para decodificar a instrução passada por linha de comando
 	@SuppressWarnings("unused")
 	public static void decodifica(String s) {
 		if (s.substring(0, 3).equals("ADD")) {
