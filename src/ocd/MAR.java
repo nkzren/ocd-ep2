@@ -1,9 +1,9 @@
 package ocd;
 
 public class MAR{
-    static private int valor;
+    static public int valor;
 
-    public MAR(int memoriaEntrada){
+    public static set(int memoriaEntrada){
         this.valor = memoriaEntrada;
     }
 

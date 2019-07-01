@@ -15,4 +15,7 @@ public class Memoria{
     public static void addIndice(int[] palavra){
     	memoria.add(IR.porta1, palavra);
     }
+    public static void imprime(int i){
+        System.out.println(memoria[i]);
+    }
 }

@@ -2,7 +2,7 @@ package ocd;
 
 class IR{
 	
-	private static String opcode;
+	public static String opcode;
 	public static int porta1;
 	public static int porta2;
 	

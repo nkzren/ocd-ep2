@@ -109,20 +109,20 @@ public class Decodificador {
 		else{
 			//tipo lançamento de excessão
 		}
-		if(registrador2 == "AX"){
+		if(registrador2.equalsIgnoreCase("AX")){
 			//registrador na posição 0
 			for(int i = 12;i < cod.length;i++){
 				cod[i] = 0;
 			}
 		}
-		else if(registrador2 == "BX"){
+		else if(registrador2.equalsIgnoreCase("BX")){
 			//registrador na posição 1
 			for(int i = 12;i < cod.length-1;i++){
 				cod[i] = 0;
 			}
 			cod[cod.length-1] = 1;
 		}
-		else if(registrador2 == "CX"){
+		else if(registrador2.equalsIgnoreCase("CX")){
 			 //registrador na posição 2
 			for(int i = 12;i < cod.length-2;i++){
 				cod[i] = 0;
@@ -130,7 +130,7 @@ public class Decodificador {
 			cod[cod.length-2] = 1;
 			cod[cod.length-1] = 0;
 		}
-		else if(registrador2 == "DX"){
+		else if(registrador2.equalsIgnoreCase("DX")){
 			//registrador na posição 3
 			for(int i = 12;i < cod.length-2;i++){
 				cod[i] = 0;
