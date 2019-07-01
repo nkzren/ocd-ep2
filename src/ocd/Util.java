@@ -27,4 +27,29 @@ public class Util {
 		return Integer.parseInt(string, 2);
 	}
 
+	public int[] converteBin(int numero){
+		int d = numero;
+		int b;
+			int[] vetor = new int[18];
+			int i =0;
+		while ( d > 0){
+			b = d % 2;
+			vetor[17-i]=b;
+			d -= (d/2)+b;
+			i++;
+		}
+			return vetor;
+	}
+
+	public static void inicializaR(){
+		int[] codigo = new int[18];
+		for(int i = 0;i<18;i++){
+		codigo[i] = 0;
+		}
+		Memoria.add(codigo);
+		Memoria.add(codigo);
+		Memoria.add(codigo);
+		Memoria.add(codigo);
+	}
+
 }

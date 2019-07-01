@@ -1,4 +1,4 @@
-// package ocd;
+package ocd;
 
 public class Decodificador {
 	
@@ -148,10 +148,10 @@ public class Decodificador {
     //transforma um valor numérico em ...
 		else{
 			int valor = Integer.parseInt(registrador2);
-			String bin = Integer.toBinaryString(valor);
-			for(int i = 12;i < cod.length;i++){
-				cod[i] = bin.charAt(i-12);
-			}
+			int[] constanteNumerica = new int[18];
+			constanteNumerica = Util.getInstance().converteBin(valor);
+			System.out.println(Util.getInstance().intArrayToString(constanteNumerica));
+			// Memoria.addIndice(63,constanteNumerica);
 		}
 		return cod;
 	}

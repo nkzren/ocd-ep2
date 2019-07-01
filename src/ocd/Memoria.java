@@ -9,13 +9,13 @@ public class Memoria{
         return memoria.get(indice+4);
     }
     public static void add(int[] palavra){
-    	System.out.println("ADICIONA PALAVRA NA MEMORIA");
+    	// System.out.println("ADICIONA PALAVRA NA MEMORIA");
         memoria.add(palavra);
     }
-    public static void addIndice(int[] palavra){
-    	memoria.add(IR.getPorta1(), palavra);
+    public static void addIndice(int indice, int[] palavra){
+    	memoria.add(indice, palavra);
     }
     public static void imprime(int i){
-        System.out.println(memoria.get(i));
+        System.out.println(Util.getInstance().intArrayToString(memoria.get(i)));
     }
 }

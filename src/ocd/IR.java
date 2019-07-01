@@ -24,8 +24,8 @@ class IR {
 		IR.opcode = opcode;
 	}
 
-	public static int get(int f){
-		if(f == 0){
+	public static int get(int flg){
+		if(flg == 0){
 			return porta1;
 		}else{
 			return porta2;
