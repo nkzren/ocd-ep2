@@ -5,7 +5,7 @@ public class Decodificador {
 	// as duas primeiras posições determinam o ciclo de instrução executado
 	// as próximas três posições determinam a operação (adição subtração, etc...)
 	// a sexta posição determina se a instrução é feita na porta 1 ou 2 do IR
-	public int[] adicionaUPCODE(int[] cod, int instrucao, int operacao, int porta) {
+	public static int[] adicionaUPCODE(int[] cod, int instrucao, int operacao, int porta) {
 		if (instrucao == 0) {// adicionar ao acumulador
 			// adiciona nas duas primeiras posicoes 00
 			setInstrucao(cod, 0, 0);
@@ -59,22 +59,22 @@ public class Decodificador {
 
 	}
 	
-	private void setInstrucao(int[] cod, int pos1, int pos2) {
+	private static void setInstrucao(int[] cod, int pos1, int pos2) {
 		cod[0] = pos1;
 		cod[1] = pos2;
 	}
 	
-	private void setOperacao(int[] cod, int pos1, int pos2, int pos3) {
+	private static void setOperacao(int[] cod, int pos1, int pos2, int pos3) {
 		cod[2] = pos1;
 		cod[3] = pos2;
 		cod[4] = pos3;
 	}
 	
-	private void setPorta(int[] cod, int pos) {
+	private static void setPorta(int[] cod, int pos) {
 		cod[5] = pos;
 	}
 
-	public int[] insereEnderecos(int[] cod, String instrucao) {
+	public static int[] insereEnderecos(int[] cod, String instrucao) {
 		String registrador1 = instrucao.substring(4,instrucao.indexOf(','));
 		String registrador2 = instrucao.substring(instrucao.indexOf(',')+1,instrucao.length());
 		if(registrador1.equalsIgnoreCase("AX")){
@@ -155,7 +155,7 @@ public class Decodificador {
 	}
 
 	@SuppressWarnings("unused")
-	public void decodifica(String s) {
+	public static void decodifica(String s) {
 		if (s.substring(0, 3) == "ADD") {
 			int[] codigo1 = new int[18];
 			int[] codigo2 = new int[18];

@@ -9,7 +9,7 @@ public class PC {
     static public int get(){
         return valorPc;
     }
-    static public set(int valorEntrada){
+    static public void set(int valorEntrada){
         valorPc = valorEntrada;
     }
 }
