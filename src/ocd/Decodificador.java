@@ -104,8 +104,7 @@ public class Decodificador {
 			Memoria.add(codigo1);
 			Memoria.add(codigo2);
 			Memoria.add(codigo3);
-		}
-		if (s.substring(0, 3) == "SUB") {
+		} else if (s.substring(0, 3) == "SUB") {
 			int[] codigo1 = new int[18];
 			int[] codigo2 = new int[18];
 			int[] codigo3 = new int[18];
@@ -125,8 +124,7 @@ public class Decodificador {
 			Memoria.add(codigo1);
 			Memoria.add(codigo2);
 			Memoria.add(codigo3);
-		}
-		if (s.substring(0, 3) == "MUL") {
+		} else if (s.substring(0, 3) == "MUL") {
 			int[] codigo1 = new int[18];
 			int[] codigo2 = new int[18];
 			int[] codigo3 = new int[18];
@@ -146,8 +144,7 @@ public class Decodificador {
 			Memoria.add(codigo1);
 			Memoria.add(codigo2);
 			Memoria.add(codigo3);
-		}
-		if (s.substring(0, 3) == "DIV") {
+		} else if (s.substring(0, 3) == "DIV") {
 			int[] codigo1 = new int[18];
 			int[] codigo2 = new int[18];
 			int[] codigo3 = new int[18];
@@ -167,8 +164,7 @@ public class Decodificador {
 			Memoria.add(codigo1);
 			Memoria.add(codigo2);
 			Memoria.add(codigo3);
-		}
-		if (s.substring(0, 3) == "MOV") {
+		} else if (s.substring(0, 3) == "MOV") {
 			int[] codigo1 = new int[18];
 			int[] codigo2 = new int[18];
 			int[] codigo3 = new int[18];
@@ -188,35 +184,25 @@ public class Decodificador {
 			Memoria.add(codigo1);
 			Memoria.add(codigo2);
 			Memoria.add(codigo3);
-		}
-		if (s.substring(0, 3) == "INC") {
+		} else if (s.substring(0, 3) == "INC") {
 
-		}
-		if (s.substring(0, 3) == "DEC") {
+		} else if (s.substring(0, 3) == "DEC") {
 
-		}
-		if (s.substring(0, 3) == "CMP") {
+		} else if (s.substring(0, 3) == "CMP") {
 
-		}
-		if (s.substring(0, 3) == "JMP") {
+		} else if (s.substring(0, 3) == "JMP") {
 
-		}
-		if (s.substring(0, 3) == "JPE") {
+		} else if (s.substring(0, 3) == "JPE") {
 
-		}
-		if (s.substring(0, 3) == "JPG") {
+		} else if (s.substring(0, 3) == "JPG") {
 
-		}
-		if (s.substring(0, 3) == "JGE") {
+		} else if (s.substring(0, 3) == "JGE") {
 
-		}
-		if (s.substring(0, 3) == "JPL") {
+		} else if (s.substring(0, 3) == "JPL") {
 
-		}
-		if (s.substring(0, 3) == "JLE") {
+		} else if (s.substring(0, 3) == "JLE") {
 
-		}
-		if (s.substring(0, 3) == "JNE") {
+		} else if (s.substring(0, 3) == "JNE") {
 
 		}
 	}
