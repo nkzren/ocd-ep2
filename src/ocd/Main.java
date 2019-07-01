@@ -4,15 +4,13 @@ class Main {
   public static void cicloBusca(){
       MAR.set(PC.get());
       MBR.set(Memoria.getValor(MAR.valor));
-      IR.construtor(MBR.get());
-      IR.opcode = "000000";
-      UC(IR.opcode);
+      IR.define(MBR.get());
+      UC(IR.getOpcode());
   }
 
   public static void UC(String opcode){
     int flag = 0;
     PC.incrementaPc();
-    System.out.println("Chegou aqui");
     if(opcode.equals("00")){
         //instrução 1 - Coloca endereço 1 no acumulador
         MAR.set(IR.get(flag));
@@ -24,14 +22,14 @@ class Main {
       flag = 1;
       MAR.set(IR.get(flag));
       MBR.set(Memoria.getValor(MAR.valor));
-      // ULA.send(MBR.get(),IR.getOpcode());
+      ULA.send(MBR.get(),IR.getOpcode());
     }
     if(opcode.equals("10")){
       //instrução 3 - Coloca acumulador no endereço 1
       flag = 0;
       MAR.set(IR.get(flag));
       MBR.set(Memoria.getValor(MAR.valor));
-      MBR.insereMemoria();//
+      MBR.insereMemoria();
     }
     if(opcode.equals("11")){
       //instrução 4 - Coloca o endereço 1 no PC

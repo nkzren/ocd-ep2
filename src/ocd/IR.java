@@ -6,7 +6,7 @@ class IR {
 	private static int porta1;
 	private static int porta2;
 
-	public IR(int[] vet) {
+	public static void define(int[] vet) {
 		String fullCode = Util.getInstance().intArrayToString(vet);
 		String porta1String = fullCode.substring(6, 12);
 		String porta2String = fullCode.substring(12);
