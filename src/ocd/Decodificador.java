@@ -155,7 +155,7 @@ public class Decodificador {
 	}
 
 	@SuppressWarnings("unused")
-	private void decodifica(String s) {
+	public void decodifica(String s) {
 		if (s.substring(0, 3) == "ADD") {
 			int[] codigo1 = new int[18];
 			int[] codigo2 = new int[18];

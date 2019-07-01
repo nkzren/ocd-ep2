@@ -10,6 +10,6 @@ public class MBR{
         return valor;
     }
     public static void insereMemoria(){
-        Memoria.add(IR.Opcode, valor);
+        Memoria.addIndice(valor);
     }
 }

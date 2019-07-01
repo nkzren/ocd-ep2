@@ -10,6 +10,6 @@ public class PC {
         return valorPc;
     }
     static public set(int valorEntrada){
-        this.valorPc = valorEntrada;
+        valorPc = valorEntrada;
     }
 }

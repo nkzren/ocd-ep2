@@ -3,8 +3,8 @@ package ocd;
 public class MAR{
     static public int valor;
 
-    public static set(int memoriaEntrada){
-        this.valor = memoriaEntrada;
+    public static void set(int memoriaEntrada){
+        valor = memoriaEntrada;
     }
 
 }

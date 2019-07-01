@@ -16,6 +16,6 @@ public class Memoria{
     	memoria.add(IR.porta1, palavra);
     }
     public static void imprime(int i){
-        System.out.println(memoria[i]);
+        System.out.println(memoria.get(i));
     }
 }
