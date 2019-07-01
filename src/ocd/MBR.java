@@ -4,12 +4,12 @@ public class MBR{
     static private int[] valor;
 
     static public void set(int[] memoria){
-        this.valor = memoria;
+        valor = memoria;
     }
     public static int[] get(){
-        return this.valor;
+        return valor;
     }
-    public static InsereMemoria(){
-        Memoria.add(this.valor)
+    public static void insereMemoria(){
+        Memoria.add(valor);
     }
 }
