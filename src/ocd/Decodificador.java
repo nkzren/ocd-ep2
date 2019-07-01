@@ -1,11 +1,11 @@
 package ocd;
 
 public class Decodificador {
+	
 	// as duas primeiras posições determinam o ciclo de instrução executado
 	// as próximas três posições determinam a operação (adição subtração, etc...)
 	// a sexta posição determina se a instrução é feita na porta 1 ou 2 do IR
-
-	private int[] adicionaUPCODE(int[] cod, int instrucao, int operacao, int porta) {
+	public int[] adicionaUPCODE(int[] cod, int instrucao, int operacao, int porta) {
 		if (instrucao == 0) {// adicionar ao acumulador
 			// adiciona nas duas primeiras posicoes 00
 			setInstrucao(cod, 0, 0);
@@ -74,23 +74,23 @@ public class Decodificador {
 		cod[5] = pos;
 	}
 
-	private int[] insereEnderecos(int[] cod, String instrucao) {
+	public int[] insereEnderecos(int[] cod, String instrucao) {
 		String registrador1 = instrucao.substring(4,instrucao.indexOf(','));
 		String registrador2 = instrucao.substring(instrucao.indexOf(',')+1,instrucao.length());
-		if(registrador1 == "AX"){
+		if(registrador1.equalsIgnoreCase("AX")){
 			//registrador na posição 0
 			for(int i = 6;i < 12;i++){
 				cod[i] = 0;
 			}
 		}
-		else if(registrador1 == "BX"){
+		else if(registrador1.equalsIgnoreCase("BX")){
 			//registrador na posição 1
 			for(int i = 6;i < 11;i++){
 				cod[i] = 0;
 			}
 			cod[11] = 1;
 		}
-		else if(registrador1 == "CX"){
+		else if(registrador1.equalsIgnoreCase("CX")){
 			//registrador na posição 2
 			for(int i = 6;i < 10;i++){
 				cod[i] = 0;
@@ -98,7 +98,7 @@ public class Decodificador {
 			cod[10] = 1;
 			cod[11] = 0;
 		}
-		else if(registrador1 == "DX"){
+		else if(registrador1.equalsIgnoreCase("DX")){
 			//registrador na posição 3
 			for(int i = 6;i < 10;i++){
 				cod[i] = 0;
@@ -154,6 +154,7 @@ public class Decodificador {
 		// insere codigo da posicao 12 ate o fim (seis numeros)
 	}
 
+	@SuppressWarnings("unused")
 	private void decodifica(String s) {
 		if (s.substring(0, 3) == "ADD") {
 			int[] codigo1 = new int[18];
