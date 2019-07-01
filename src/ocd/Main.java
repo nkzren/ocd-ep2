@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 class Main {
   public static void cicloBusca(){
+      System.out.println("Inicia ciclo de busca");
       MAR.set(PC.get());
       MBR.set(Memoria.getValor(MAR.valor));
       IR.define(MBR.get());
@@ -9,6 +10,7 @@ class Main {
   }
 
   public static void UC(String opcode){
+    System.out.println("Executa instrução");
     int flag = 0;
     PC.incrementaPc();
     if(opcode.equals("00")){
@@ -17,23 +19,26 @@ class Main {
         MBR.set(Memoria.getValor(MAR.valor));
         AC.recebeVetor(MBR.get());
     }
-    if(opcode.equals("01")){
+    else if(opcode.equals("01")){
       //instrução 2 - Soma endereço 2 ao acumulador
       flag = 1;
       MAR.set(IR.get(flag));
       MBR.set(Memoria.getValor(MAR.valor));
       ULA.send(MBR.get(),IR.getOpcode());
     }
-    if(opcode.equals("10")){
+    else if(opcode.equals("10")){
       //instrução 3 - Coloca acumulador no endereço 1
       flag = 0;
       MAR.set(IR.get(flag));
       MBR.set(Memoria.getValor(MAR.valor));
       MBR.insereMemoria();
     }
-    if(opcode.equals("11")){
+    else if(opcode.equals("11")){
       //instrução 4 - Coloca o endereço 1 no PC
       PC.set(IR.get(flag));
+    }
+    else{
+      System.out.println("Algo deu errado");
     }
   }
 
