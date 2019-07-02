@@ -10,6 +10,6 @@ public class MBR{
         return valor;
     }
     public static void insereMemoria(int indice){
-        Memoria.addIndice(indice, valor);
+        Memoria.add(indice, valor);
     }
 }

@@ -1,3 +1,4 @@
+package ocd;
 import java.util.Scanner;
 
 class Main {
@@ -13,58 +14,56 @@ class Main {
 
   public static void UC(String opcode){
     System.out.println("Executa instrução");
-    int flag = 0;
+    int flag = opcode.charAt(5) - '0';//flag para determinar qual porta da IR será acessada
     PC.incrementaPc();
     if(opcode.substring(0,2).equals("00")){
         //instrução 1 - Coloca endereço 1 no acumulador
+        System.out.println("Entrou na execução 1");
         MAR.set(IR.get(flag));
         MBR.set(Memoria.getValor(MAR.valor));
         AC.recebeVetor(MBR.get());
     }
     else if(opcode.substring(0,2).equals("01")){
       //instrução 2 - Soma endereço 2 ao acumulador
-      flag = 1;
+      System.out.println("Entrou na execução 2");
       MAR.set(IR.get(flag));
       MBR.set(Memoria.getValor(MAR.valor));
       ULA.send(MBR.get(),IR.getOpcode());
     }
     else if(opcode.substring(0,2).equals("10")){
+      System.out.println("Entrou na execução 3");
       //instrução 3 - Coloca acumulador no endereço 1
-      flag = 0;
       MAR.set(IR.get(flag));
       MBR.set(AC.get());
       MBR.insereMemoria(MAR.valor);
     }
     else if(opcode.substring(0,2).equals("11")){
+      System.out.println("Entrou na execução 4");
       //instrução 4 - Coloca o endereço 1 no PC
       PC.set(IR.get(flag));
     }
     else{
       System.out.println("Algo deu errado");
     }
+    Registradores.imprimir();
   }
 
   public static void main(String[] args) {
-      Util.inicializaR();
+      Registradores.inicializar();
       boolean continua = true;
+      Registradores.imprimir();
       while(continua){
-      System.out.print("AX: ");
-      Memoria.imprime(0);
-      System.out.print("BX: ");
-      Memoria.imprime(1);
-      System.out.print("CX: ");
-      Memoria.imprime(2);
-      System.out.print("DX: ");
-      Memoria.imprime(3);
       Scanner ler = new Scanner(System.in);
       System.out.println("Insira operação: (ex: ADD AX,BX)");
       String s = ler.nextLine();
+      System.out.println("");
       if(s.equals("end")){
         System.out.println("Fim da execução");
         continua = false;
-      } 
-      Decodificador.decodifica(s);
-      cicloBusca();
+      }else {
+        Decodificador.decodifica(s);
+        cicloBusca();
+      }
     }
   }
 }

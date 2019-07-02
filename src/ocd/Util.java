@@ -40,16 +40,4 @@ public class Util {
       }
 		return vetor;
   }
-
-  public static void inicializaR(){
-    int[] codigo = new int[18];
-    for(int i = 0;i<18;i++){
-      codigo[i] = 0;
-    }
-    Memoria.add(codigo);
-    Memoria.add(codigo);
-    Memoria.add(codigo);
-    Memoria.add(codigo);
-  }
-
 }

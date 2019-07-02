@@ -15,7 +15,7 @@ public class Memoria{
         memoria[contIndice] = palavra;
         contIndice++;
     }
-    public static void addIndice(int indice, int[] palavra){
+    public static void add(int indice, int[] palavra){
     	memoria[indice] = palavra;
     }
     public static void imprime(int i){
