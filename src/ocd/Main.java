@@ -1,3 +1,5 @@
+package ocd;
+
 import java.util.Scanner;
 import java.io.*;
 
