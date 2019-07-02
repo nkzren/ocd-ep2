@@ -12,6 +12,7 @@ class Main {
     }
   }
 
+  //UNIDADE DE CONTROLE
   public static void UC(String opcode){
     System.out.println("Executa instrução");
     int flag = opcode.charAt(5) - '0';//flag para determinar qual porta da IR será acessada
