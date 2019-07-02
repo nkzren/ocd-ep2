@@ -39,6 +39,7 @@ class Main {
       MBR.set(AC.get());//MBR <- (AC)
       MBR.insereMemoria(MAR.valor);//memória <- (MBR)
       Registradores.imprimir();
+      // cicloBusca();
     }
     else if(opcode.substring(0,2).equals("11")){
       System.out.println("Entrou na execução 4");
@@ -61,6 +62,7 @@ class Main {
       BufferedReader br = new BufferedReader(isn);
       while(continua){
         String s = br.readLine();
+        Registradores.imprimir();
         System.out.println("");
         System.out.println("*****"+s);
         System.out.println("");
@@ -68,7 +70,7 @@ class Main {
         // System.out.println("Insira operação: (ex: ADD AX,BX)");
         // String s = ler.nextLine();
         // System.out.println("");
-        Registradores.imprimir();
+        
         if(s.equalsIgnoreCase("end")){
           System.out.println("Fim da execução");
           continua = false;
@@ -77,5 +79,6 @@ class Main {
           cicloBusca();
         }
       }
+      
   }
 }
