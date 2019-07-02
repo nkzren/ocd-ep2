@@ -1,0 +1,5 @@
+ADD AX,27
+DIV AX,3
+MOV BX,AX
+JMP 01
+end
