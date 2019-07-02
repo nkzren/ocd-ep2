@@ -1,47 +1,48 @@
 package ocd;
+
+import java.io.*;
 import java.util.Scanner;
 
 class Main {
   public static void cicloBusca(){
     for(int i = 0;i < 3;i++){
       System.out.println("Inicia ciclo de busca");
-      MAR.set(PC.get());
-      MBR.set(Memoria.getValor(MAR.valor));
-      IR.define(MBR.get());
-      UC(IR.getOpcode());
+      MAR.set(PC.get());//MAR <- (PC)
+      MBR.set(Memoria.getValor(MAR.valor));//MBR <- (memória)
+      IR.define(MBR.get());//IR <- (MBR)
+      UC(IR.getOpcode());//UC interpreta opcode da IR (Incremento do PC ocorre aqui)
     }
   }
 
-  //UNIDADE DE CONTROLE
   public static void UC(String opcode){
     System.out.println("Executa instrução");
     int flag = opcode.charAt(5) - '0';//flag para determinar qual porta da IR será acessada
-    PC.incrementaPc();
+    PC.incrementaPc();//PC <- (PC) + 1
     if(opcode.substring(0,2).equals("00")){
         //instrução 1 - Coloca endereço 1 no acumulador
         System.out.println("Entrou na execução 1");
-        MAR.set(IR.get(flag));
-        MBR.set(Memoria.getValor(MAR.valor));
-        AC.recebeVetor(MBR.get());
+        MAR.set(IR.get(flag));//MAR <- (IR)
+        MBR.set(Memoria.getValor(MAR.valor));//MBR <- (memória)
+        AC.recebeVetor(MBR.get());//AC <- (MBR)
     }
     else if(opcode.substring(0,2).equals("01")){
       //instrução 2 - Soma endereço 2 ao acumulador
       System.out.println("Entrou na execução 2");
-      MAR.set(IR.get(flag));
-      MBR.set(Memoria.getValor(MAR.valor));
-      ULA.send(MBR.get(),IR.getOpcode());
+      MAR.set(IR.get(flag));//MAR <- (IR)
+      MBR.set(Memoria.getValor(MAR.valor));//MBR <- (memória)
+      ULA.send(MBR.get(),IR.getOpcode());//ULA <- (MBR) *não é necessário passar IR com parâmetro, mas torna o código mais simples
     }
     else if(opcode.substring(0,2).equals("10")){
       System.out.println("Entrou na execução 3");
       //instrução 3 - Coloca acumulador no endereço 1
-      MAR.set(IR.get(flag));
-      MBR.set(AC.get());
-      MBR.insereMemoria(MAR.valor);
+      MAR.set(IR.get(flag));//MAR <- (IR)
+      MBR.set(AC.get());//MBR <- (AC)
+      MBR.insereMemoria(MAR.valor);//memória <- (MBR)
     }
     else if(opcode.substring(0,2).equals("11")){
       System.out.println("Entrou na execução 4");
       //instrução 4 - Coloca o endereço 1 no PC
-      PC.set(IR.get(flag));
+      PC.set(IR.get(flag));//PC <- (IR)
     }
     else{
       System.out.println("Algo deu errado");
@@ -49,22 +50,28 @@ class Main {
     Registradores.imprimir();
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException{
       Registradores.inicializar();
       boolean continua = true;
       Registradores.imprimir();
+      InputStream is = new FileInputStream("instrucoes.txt");
+      InputStreamReader isn = new InputStreamReader(is);
+      BufferedReader br = new BufferedReader(isn);
       while(continua){
-      Scanner ler = new Scanner(System.in);
-      System.out.println("Insira operação: (ex: ADD AX,BX)");
-      String s = ler.nextLine();
-      System.out.println("");
-      if(s.equalsIgnoreCase("end")){
-        System.out.println("Fim da execução");
-        continua = false;
-      }else {
-        Decodificador.decodifica(s);
-        cicloBusca();
+        String s = br.readLine();
+        System.out.println("*****"+s);
+        System.out.println("");
+        // Scanner ler = new Scanner(System.in);
+        // System.out.println("Insira operação: (ex: ADD AX,BX)");
+        // String s = ler.nextLine();
+        // System.out.println("");
+        if(s.equalsIgnoreCase("end")){
+          System.out.println("Fim da execução");
+          continua = false;
+        }else {
+          Decodificador.decodifica(s);
+          cicloBusca();
+        }
       }
-    }
   }
 }
