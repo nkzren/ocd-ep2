@@ -1,4 +1,4 @@
-package ocd;
+// package ocd;
 
 public class ULA {
   public static void send(int [] valor, String operador){

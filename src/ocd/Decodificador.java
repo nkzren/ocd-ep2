@@ -1,4 +1,4 @@
-  package ocd;
+  // package ocd;
 
   public class Decodificador {
     // define as 6 primeiras posições do vetor como o opcode da palavra

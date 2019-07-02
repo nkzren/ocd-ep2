@@ -2,3 +2,13 @@
 .classpath
 .project
 src/ocd/Barramento.java
+src/ocd/AC.class
+src/ocd/Decodificador.class
+src/ocd/IR.class
+src/ocd/MAR.class
+src/ocd/MBR.class
+src/ocd/Main.class
+src/ocd/Memoria.class
+src/ocd/PC.class
+src/ocd/ULA.class
+src/ocd/Util.class
