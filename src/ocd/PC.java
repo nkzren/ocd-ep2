@@ -11,6 +11,5 @@ public class PC {
     }
     static public void set(int valorEntrada){
         valorPc = valorEntrada;
-        System.out.println("PC: "+valorPc);
     }
 }

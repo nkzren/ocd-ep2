@@ -46,6 +46,9 @@
         // adiciona nas proximas tres posicoes 101
         setOperacao(cod, 1, 0, 1);
       }
+      if (operacao == 7) {//mov (não é jogado na ULA, mas é verificado na execução)
+        setOperacao(cod, 1, 1, 1);
+      }
       if (porta == 0) {// porta 1
         // adiciona na sexta posicao 0
         setPorta(cod, 0);
@@ -113,7 +116,18 @@
         cod[11] = 1;
       }
       else{
-        System.out.println("Comando inválido");
+        int valor = Integer.parseInt(registrador1);
+        String valorBin = Integer.toBinaryString(valor);
+        //insere primeiro tudo zero
+        for(int i = 6;i < 12;i++){
+          cod[i] = 0;
+        }
+        //depois insere o valor em binario da direita pra esquerda
+        int j = 11;
+        for(int i = valorBin.length()-1;i >= 0;i--){
+          cod[j] = valorBin.charAt(i) - '0';
+          j--;
+        }
       }
 
       //define segundo endereço
@@ -245,13 +259,13 @@
         int[] codigo2 = new int[18];
         int[] codigo3 = new int[18];
 
-        codigo1 = adicionaUPCODE(codigo1, 0, 0, 1);
+        codigo1 = adicionaUPCODE(codigo1, 0, 7, 1);
         codigo1 = insereEnderecos(codigo1, s);
 
-        codigo2 = adicionaUPCODE(codigo2, 2, 0, 0);
+        codigo2 = adicionaUPCODE(codigo2, 2, 7, 0);
         codigo2 = insereEnderecos(codigo2, s);
 
-        codigo3 = adicionaUPCODE(codigo3, 0, 0, 0);
+        codigo3 = adicionaUPCODE(codigo3, 0, 7, 0);
         codigo3 = insereEnderecos(codigo3, s);
 
         Memoria.add(codigo1);
@@ -299,9 +313,28 @@
         Memoria.add(codigo3);
       }// else if (s.substring(0, 3) == "CMP") {
 
-      // } else if (s.substring(0, 3) == "JMP") {
+      //}
+      else if (s.substring(0, 3).equalsIgnoreCase("JMP")) {
+        int[] codigo1 = new int[18];
+        int[] codigo2 = new int[18];
+        int[] codigo3 = new int[18];
 
-      // } else if (s.substring(0, 3) == "JPE") {
+        // insere o opcode do primeiro item na memória
+        codigo1 = adicionaUPCODE(codigo1, 3, 0, 0);
+        codigo1 = insereEnderecos(codigo1, s);
+
+        // insere o opcoden do segundo item na memória
+        codigo2 = adicionaUPCODE(codigo2, 0, 0, 0);
+        codigo2 = insereEnderecos(codigo2, s);
+
+        // insere o opcode do terceiro item na memória
+        codigo3 = adicionaUPCODE(codigo3, 0, 0, 0);
+        codigo3 = insereEnderecos(codigo3, s);
+
+        Memoria.add(codigo1);
+        Memoria.add(codigo2);
+        Memoria.add(codigo3);
+      }// else if (s.substring(0, 3) == "JPE") {
 
       // } else if (s.substring(0, 3) == "JPG") {
 
