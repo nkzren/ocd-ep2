@@ -27,7 +27,7 @@ public class Util {
 		return Integer.parseInt(string, 2);
 	}
 
-  public int[] converteBin(int numero){
+  public int[] IntegerToArray(int numero){
     int d = numero;
     int b;
 		int[] vetor = new int[18];

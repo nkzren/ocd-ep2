@@ -29,6 +29,6 @@ public class ULA {
       ac--;
     }
     //Após realizada a operação, transformamos o inteiro ac em vetor e colocamos devolta ao registrador AC
-    AC.recebeVetor(Util.getInstance().converteBin(ac));
+    AC.recebeVetor(Util.getInstance().IntegerToArray(ac));
   }
 }

@@ -57,7 +57,7 @@ class Main {
       System.out.println("Insira operação: (ex: ADD AX,BX)");
       String s = ler.nextLine();
       System.out.println("");
-      if(s.equals("end")){
+      if(s.equalsIgnoreCase("end")){
         System.out.println("Fim da execução");
         continua = false;
       }else {
