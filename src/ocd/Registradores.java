@@ -28,7 +28,9 @@ public class Registradores{
         System.out.println("PC: "+pc);
         System.out.println("MAR: "+MAR.valor);
         System.out.println("MBR: "+Util.getInstance().intArrayToString(MBR.get()));
-        System.out.println("IR: "+IR.getOpcode()+Integer.toBinaryString(IR.get(0))+Integer.toBinaryString(IR.get(1)));
+        String porta1 = Integer.toBinaryString(IR.get(0));
+		String porta2 = Integer.toBinaryString(IR.get(1));
+		System.out.println("IR: "+IR.getOpcode()+Util.getInstance().lpad(porta1, 6) + Util.getInstance().lpad(porta2, 6));
         System.out.println("AC: "+Util.getInstance().intArrayToString(AC.get()));
         System.out.println("------------------------------");
     }

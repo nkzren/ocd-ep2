@@ -1,4 +1,4 @@
-// package ocd;
+package ocd;
 
 public class AC{
     static private int[] vetor;
